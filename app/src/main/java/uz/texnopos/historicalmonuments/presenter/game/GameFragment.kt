@@ -43,7 +43,6 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
 
         setQuestion()
 
-
         binding.btnSave.setOnClickListener {
 
             val name: String = binding.etAnswerName.text.toString()
@@ -127,34 +126,34 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
     private fun switchImage():Int{
         return when(count){
             0->{
-                R.drawable.gaur_kala_in_karakalpakstan
+                R.drawable.gaur_qala
             }
             1->{
-                R.drawable.tupra_kala_in_karakalpakstan
+                R.drawable.tupraq_qala
             }
             2->{
-                R.drawable.ustyurt_platasi
+                R.drawable.ustyurt
             }
             3->{
-                R.drawable.mizdahkan
+                R.drawable.mizdakhan
             }
             4->{
-                R.drawable.chilpak
+                R.drawable.shilpiq
             }
             5->{
-                R.drawable.kizil_kala
+                R.drawable.qizil_qorgan
             }
             6->{
-                R.drawable.ayaz_kala
+                R.drawable.ayaz_qala
             }
             7->{
-                R.drawable.djanbas_kala
+                R.drawable.djanbas_qala
             }
             8->{
-                R.drawable.visit_koi_krylgan_kala
+                R.drawable.qoyqirilgan_qala
             }
             else ->{
-                R.drawable.guldursun_kala
+                R.drawable.guldursun_qala
             }
         }
     }

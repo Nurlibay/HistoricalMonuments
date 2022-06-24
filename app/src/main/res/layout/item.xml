@@ -20,7 +20,7 @@
             android:scaleType="center"
             app:layout_constraintBottom_toTopOf="@id/tv_monument"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/chilpak" />
+            app:srcCompat="@drawable/shilpiq" />
 
         <TextView
             android:id="@+id/tv_monument"

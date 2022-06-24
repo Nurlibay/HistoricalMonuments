@@ -59,18 +59,16 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     companion object {
         var list = listOf(
-            R.drawable.ayaz_kala,
-            R.drawable.chilpak,
-            R.drawable.djanbas_kala,
-            R.drawable.ayaz_kala,
-            R.drawable.chilpak,
-            R.drawable.djanbas_kala,
-            R.drawable.ayaz_kala,
-            R.drawable.chilpak,
-            R.drawable.djanbas_kala,
-            R.drawable.ayaz_kala,
-            R.drawable.chilpak,
-            R.drawable.djanbas_kala
+            R.drawable.gaur_qala,
+            R.drawable.tupraq_qala,
+            R.drawable.ustyurt,
+            R.drawable.mizdakhan,
+            R.drawable.shilpiq,
+            R.drawable.qizil_qorgan,
+            R.drawable.ayaz_qala,
+            R.drawable.djanbas_qala,
+            R.drawable.qoyqirilgan_qala,
+            R.drawable.guldursun_qala,
         )
     }
 }
