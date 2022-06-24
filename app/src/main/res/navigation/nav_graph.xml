@@ -51,5 +51,9 @@
             android:id="@+id/action_searchFragment_to_descriptionFragment"
             app:destination="@id/descriptionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="uz.texnopos.historicalmonuments.presenter.game.GameFragment"
+        android:label="GameFragment" />
 
 </navigation>

@@ -3,19 +3,26 @@ package uz.texnopos.historicalmonuments.presenter.game
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import uz.texnopos.berdaqgargabayuli.utils.showMessage
 import uz.texnopos.historicalmonuments.R
 import uz.texnopos.historicalmonuments.data.entity.Monument
 import uz.texnopos.historicalmonuments.databinding.CustomDialogInGameBinding
 import uz.texnopos.historicalmonuments.databinding.CustomDialogResultBinding
 import uz.texnopos.historicalmonuments.databinding.FragmentGameBinding
+import uz.texnopos.historicalmonuments.presenter.main.MainViewModel
+import uz.texnopos.historicalmonuments.utils.ResourceState
 
-class GameFragment(private val models: List<Monument>) : Fragment(R.layout.fragment_game) {
+class GameFragment() : Fragment(R.layout.fragment_game) {
+
+    private val viewModel: MainViewModel by viewModel()
+
+    private var models: List<Monument> = emptyList()
+
     private lateinit var binding: FragmentGameBinding
+
     private var count: Int = -1
     private var c: Boolean = true
     private var corrent_answer: Int = 0
@@ -26,8 +33,11 @@ class GameFragment(private val models: List<Monument>) : Fragment(R.layout.fragm
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentGameBinding.bind(view)
 
+        setupObserver()
+        viewModel.getAllMonuments()
+
         val bindingDialog = CustomDialogInGameBinding.inflate(layoutInflater)
-        var bindingResult = CustomDialogResultBinding.inflate(layoutInflater)
+        val bindingResult = CustomDialogResultBinding.inflate(layoutInflater)
 
         setImage()
 
@@ -36,7 +46,7 @@ class GameFragment(private val models: List<Monument>) : Fragment(R.layout.fragm
 
         binding.btnSave.setOnClickListener {
 
-            var name: String = binding.etAnswerName.text.toString()
+            val name: String = binding.etAnswerName.text.toString()
 
             if ((count == 9) || (incorrect_answer == 4 && name == models[count].name) ) {
                 bindingResult.tvResult.text =
@@ -84,6 +94,20 @@ class GameFragment(private val models: List<Monument>) : Fragment(R.layout.fragm
 
     }
 
+    private fun setupObserver() {
+        viewModel.songs.observe(viewLifecycleOwner) {
+            when (it.status) {
+                ResourceState.LOADING -> {}
+                ResourceState.SUCCESS -> {
+                    models = it.data!!
+                }
+                ResourceState.ERROR -> {
+                    showMessage(it.message)
+                }
+            }
+        }
+    }
+
     private fun setImage() {
         imageList.add(binding.ivLightOne)
         imageList.add(binding.ivLightTwo)
@@ -103,7 +127,7 @@ class GameFragment(private val models: List<Monument>) : Fragment(R.layout.fragm
     private fun switchImage():Int{
         return when(count){
             0->{
-               R.drawable.gaur_kala_in_karakalpakstan
+                R.drawable.gaur_kala_in_karakalpakstan
             }
             1->{
                 R.drawable.tupra_kala_in_karakalpakstan
