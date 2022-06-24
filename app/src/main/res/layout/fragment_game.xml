@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_count_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        android:text="0/10"
+        android:textColor="@android:color/background_dark"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_wrong_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@id/tv_count_question"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_light_one"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/light_bulb_yellow" />
+
+        <ImageView
+            android:id="@+id/iv_light_two"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/light_bulb_yellow" />
+
+        <ImageView
+            android:id="@+id/iv_light_three"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/light_bulb_yellow" />
+
+        <ImageView
+            android:id="@+id/iv_light_four"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/light_bulb_yellow" />
+
+        <ImageView
+            android:id="@+id/iv_light_five"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/light_bulb_yellow" />
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_game"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_margin="@dimen/margin_standard"
+        android:layout_marginTop="128dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_count_question" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        android:gravity="center"
+        android:text="description"
+        android:textColor="@android:color/background_dark"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_game" />
+
+    <EditText
+        android:id="@+id/et_answer_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        android:hint="@string/jovobingizni_kiriting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        android:backgroundTint="@color/btn_color"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_answer_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
