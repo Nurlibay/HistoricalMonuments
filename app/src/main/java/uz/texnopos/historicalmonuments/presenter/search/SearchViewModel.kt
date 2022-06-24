@@ -9,12 +9,12 @@ import uz.texnopos.historicalmonuments.data.entity.Monument
 import uz.texnopos.historicalmonuments.domain.MainRepository
 import uz.texnopos.historicalmonuments.utils.Resource
 
-class SearchListViewModel(private val mainRepository: MainRepository) : ViewModel() {
+class SearchViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     private var _songs: MutableLiveData<Resource<List<Monument>>> = MutableLiveData()
     val songs: LiveData<Resource<List<Monument>>> get() = _songs
 
-    fun getSongs() {
+    fun getAllMonuments() {
         _songs.value = Resource.loading()
         viewModelScope.launch {
             try {

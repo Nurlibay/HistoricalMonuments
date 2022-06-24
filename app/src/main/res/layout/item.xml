@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_monument"
+    style="@style/main_item_style"
+    android:layout_margin="@dimen/margin_middle"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/btnLifestyle"
-        style="@style/main_item_style"
-        android:layout_margin="@dimen/margin_middle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_monument"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:scaleType="center"
+            app:layout_constraintBottom_toTopOf="@id/tv_monument"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/chilpak" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_monument"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:src="@string/shilpiq"
-                app:layout_constraintBottom_toTopOf="@id/title_text"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/title_text"
-                style="@style/main_item_title_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/shilpiq"
-                android:textSize="@dimen/text_size"
-                app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/tv_monument"
+            style="@style/main_item_title_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/shilpiq"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_monument"
                 tools:ignore="SpUsage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

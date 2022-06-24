@@ -12,49 +12,12 @@
         tools:layout="@layout/fragment_main"
         >
         <action
-            android:id="@+id/action_mainFragment_to_lifeStyleFragment"
-            app:destination="@id/lifeStyleFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_creativityFragment"
-            app:destination="@id/creativityFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_songsFragment"
-            app:destination="@id/songsFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+
         <action
-            android:id="@+id/action_mainFragment_to_poemListFragment3"
-            app:destination="@id/poemListFragment3" />
-    </fragment>
-    <fragment
-        android:id="@+id/lifeStyleFragment"
-        android:name="uz.texnopos.berdaqgargabayuli.presenter.main.lifestyle.LifeStyleFragment"
-        android:label="LifeStyleFragment" >
-        <action
-            android:id="@+id/action_lifeStyleFragment_to_lifeStyleInfoFragment"
-            app:destination="@id/lifeStyleInfoFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/creativityFragment"
-        android:name="uz.texnopos.berdaqgargabayuli.presenter.main.creativity.CreativityFragment"
-        android:label="CreativityFragment" />
-    <fragment
-        android:id="@+id/songsFragment"
-        android:name="uz.texnopos.historicalmonuments.presenter.search.SearchListFragment"
-        android:label="SongsFragment" >
-        <action
-            android:id="@+id/action_songsFragment_to_songFragment2"
-            app:destination="@id/songFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/lifeStyleInfoFragment"
-        android:name="uz.texnopos.berdaqgargabayuli.presenter.main.lifestyle.info.LifeStyleInfoFragment"
-        android:label="LifeStyleInfoFragment" >
-        <argument
-            android:name="id"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:id="@+id/action_mainFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -62,55 +25,31 @@
         android:label="AboutFragment"
         tools:layout="@layout/fragment_about"
         />
+
     <fragment
-        android:id="@+id/songFragment"
-        android:name="uz.texnopos.berdaqgargabayuli.presenter.main.songs.song.SongFragment"
-        android:label="SongFragment" >
+        android:id="@+id/descriptionFragment"
+        android:name="uz.texnopos.historicalmonuments.presenter.main.description.DescriptionFragment"
+        android:label="DescriptionFragment" >
         <argument
-            android:name="id"
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="pos"
             app:argType="integer"
             android:defaultValue="0" />
         <argument
-            android:name="song_name"
-            app:argType="string"
-            android:defaultValue='""' />
-        <argument
-            android:name="song"
-            app:argType="string"
-            android:defaultValue='""' />
-        <argument
-            android:name="song_text"
+            android:name="description"
             app:argType="string"
             android:defaultValue='""' />
     </fragment>
     <fragment
-        android:id="@+id/poemListFragment3"
-        android:name="uz.texnopos.berdaqgargabayuli.presenter.main.poems.PoemListFragment"
-        android:label="PoemListFragment" >
+        android:id="@+id/searchFragment"
+        android:name="uz.texnopos.historicalmonuments.presenter.search.SearchFragment"
+        android:label="SearchFragment" >
         <action
-            android:id="@+id/action_poemListFragment3_to_poemFragment"
-            app:destination="@id/poemFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/poemFragment"
-        android:name="uz.texnopos.berdaqgargabayuli.presenter.main.poems.poem.PoemFragment"
-        android:label="PoemFragment" >
-        <argument
-            android:name="id"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="poem"
-            app:argType="string"
-            android:defaultValue='""' />
-        <argument
-            android:name="poem_audio"
-            app:argType="string"
-            android:defaultValue='""' />
-        <argument
-            android:name="poem_text"
-            app:argType="string"
-            android:defaultValue='""' />
+            android:id="@+id/action_searchFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
     </fragment>
 
 </navigation>

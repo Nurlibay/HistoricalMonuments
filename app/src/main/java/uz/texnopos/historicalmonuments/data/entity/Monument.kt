@@ -10,7 +10,7 @@ data class Monument(
     val id: Int,
     @ColumnInfo(name = "name")
     val name: String,
-    @ColumnInfo(name = "description")
+    @ColumnInfo(name = "descripton")
     val description: String,
     @ColumnInfo(name = "picture")
     val picture: String,

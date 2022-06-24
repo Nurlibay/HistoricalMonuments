@@ -14,7 +14,13 @@
     <string name="about_title">Haqqimizda</string>
     <string name="play_sound">PLAY SOUND</string>
     <string name="shilpiq">Shilpiq</string>
+
+    <string name="description">Description</string>
+    <string name="search">Izlew</string>
+    <string name="not_found">Tabilmadi</string>
+  
     <string name="jovobingizni_kiriting">jovobingizni kiriting</string>
     <string name="save">saqlash</string>
     <string name="continue_or">continue</string>
+  
 </resources>
