@@ -8,5 +8,5 @@ import uz.texnopos.historicalmonuments.data.entity.Monument
 interface MonumentDao {
 
     @Query("SELECT * FROM monument")
-    suspend fun getLifeData(): List<Monument>
+    suspend fun getAllMonuments(): List<Monument>
 }

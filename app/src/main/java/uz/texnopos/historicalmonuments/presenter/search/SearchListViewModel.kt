@@ -18,7 +18,7 @@ class SearchListViewModel(private val mainRepository: MainRepository) : ViewMode
         _songs.value = Resource.loading()
         viewModelScope.launch {
             try {
-                val result = mainRepository.getLifeData()
+                val result = mainRepository.getAllMonuments()
                 _songs.value = Resource.success(result)
             } catch (e: Exception) {
                 _songs.value = Resource.error(e.message.toString())

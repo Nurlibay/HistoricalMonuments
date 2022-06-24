@@ -16,9 +16,9 @@ abstract class MonumentDatabase : RoomDatabase() {
             if (!Companion::INSTANCE.isInitialized) {
                 INSTANCE = Room.databaseBuilder(
                     context, MonumentDatabase::class.java,
-                    "Monument.db"
+                    "monument.db"
                 )
-                    .createFromAsset("Monument.db")
+                    .createFromAsset("monument.db")
                     .build()
             }
             return INSTANCE
