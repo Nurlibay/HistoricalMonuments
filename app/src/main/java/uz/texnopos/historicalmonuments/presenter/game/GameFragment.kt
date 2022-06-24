@@ -18,13 +18,9 @@ import uz.texnopos.historicalmonuments.presenter.main.MainViewModel
 import uz.texnopos.historicalmonuments.utils.ResourceState
 
 class GameFragment() : Fragment(R.layout.fragment_game) {
-
     private val viewModel: MainViewModel by viewModel()
-
     private var models: List<Monument> = emptyList()
-
     private lateinit var binding: FragmentGameBinding
-
     private var count: Int = 0
     private var correct: Int = 0
     private lateinit var imageList: MutableList<ImageView>
@@ -32,19 +28,11 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentGameBinding.bind(view)
-
         setupObserver()
         viewModel.getAllMonuments()
-
         imageList = ArrayList()
-
-
-
-
         setImage()
-
         setQuestion()
-
         binding.btnSave.setOnClickListener {
 
             val name: String = binding.etAnswerName.text.toString()
@@ -52,7 +40,7 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
             if (count == 9) {
                 val bindingResult = CustomDialogResultBinding.inflate(layoutInflater)
                 bindingResult.tvResult.text =
-                    "siz 10 ta savoldan $correct ta savolga javob berdingiz, ${10 - correct} ta savolga javob bera olmadingiz"
+                    "Siz 10 sorawdan $correct sorawǵa juwap berdińiz, ${10 - correct} sorawǵa juwap bere almadińiz"
                 var dialog = Dialog(requireContext())
 
                 dialog.setContentView(bindingResult.root)
@@ -74,12 +62,12 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
             if (binding.etAnswerName.text.toString().equals(name == models[count].name)) {
                 bindingDialog.ivTrueOrFalse.setImageResource(R.drawable.correct)
                 bindingDialog.btnContinue.text = "Keyingisi"
-                bindingDialog.tvTrueOrFalse.text = "siz to'g'i javob berdingiz"
+                bindingDialog.tvTrueOrFalse.text = "Siz duris juwap berdińiz"
                 correct++
             } else {
                 bindingDialog.ivTrueOrFalse.setImageResource(R.drawable.incorrect)
-                bindingDialog.btnContinue.text = "takroran urinib ko'rish"
-                bindingDialog.tvTrueOrFalse.text = "siz noto'g'i javob berdingiz"
+                bindingDialog.btnContinue.text = "Jáne urinip kóriń"
+                bindingDialog.tvTrueOrFalse.text = "Siz naduris juwap berdińiz"
             }
             dialog.setContentView(bindingDialog.root)
             bindingDialog.btnContinue.setOnClickListener {
@@ -87,12 +75,8 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
                 dialog.dismiss()
             }
             dialog.show()
-
         }
-
-
     }
-
     private fun setupObserver() {
         viewModel.songs.observe(viewLifecycleOwner) {
             when (it.status) {
@@ -106,7 +90,6 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
             }
         }
     }
-
     private fun setImage() {
         imageList.add(binding.ivLightOne)
         imageList.add(binding.ivLightTwo)

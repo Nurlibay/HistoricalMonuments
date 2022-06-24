@@ -21,9 +21,10 @@
     <string name="search">Izlew</string>
     <string name="not_found">Tabilmadi</string>
   
-    <string name="jovobingizni_kiriting">jovobingizni kiriting</string>
-    <string name="save">saqlash</string>
+    <string name="jovobingizni_kiriting">Juwabińizdi kiritiń</string>
+    <string name="save">Saqlaw</string>
     <string name="continue_or">continue</string>
-    <string name="where_are">Jo\'qarida ko\'rsetilgen o\'rin qay jer?</string>
+    <string name="where_are">Joqarida kórsetilgen jer qay jer?</string>
+    <string name="game">Oyin</string>
 
 </resources>

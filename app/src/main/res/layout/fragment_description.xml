@@ -35,6 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topAppBar"
         android:layout_marginBottom="@dimen/margin_standard"
+        android:paddingBottom="50dp"
         >
 
         <androidx.appcompat.widget.LinearLayoutCompat

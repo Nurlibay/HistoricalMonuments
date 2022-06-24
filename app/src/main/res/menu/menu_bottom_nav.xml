@@ -16,7 +16,7 @@
         android:id="@+id/gameFragment"
         android:enabled="true"
         android:icon="@drawable/ic_videogame"
-        android:title="@string/search" />
+        android:title="@string/game" />
 
     <item
         android:id="@+id/aboutFragment"
