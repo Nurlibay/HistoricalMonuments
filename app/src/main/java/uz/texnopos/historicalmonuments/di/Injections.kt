@@ -6,8 +6,8 @@ import org.koin.dsl.module
 import uz.texnopos.historicalmonuments.data.MonumentDatabase
 import uz.texnopos.historicalmonuments.domain.MainRepository
 import uz.texnopos.historicalmonuments.domain.MainRepositoryImpl
-import uz.texnopos.historicalmonuments.presenter.search.SearchListViewModel
 import uz.texnopos.historicalmonuments.presenter.main.MainViewModel
+import uz.texnopos.historicalmonuments.presenter.search.SearchViewModel
 
 val roomModule = module {
     single { MonumentDatabase.getInstance(androidContext()).dao() }
@@ -19,5 +19,5 @@ val repositoryModule = module {
 
 val viewModelModule = module {
     viewModel { MainViewModel(mainRepository = get()) }
-    viewModel { SearchListViewModel(mainRepository = get()) }
+    viewModel { SearchViewModel(mainRepository = get()) }
 }

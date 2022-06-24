@@ -7,9 +7,9 @@ import uz.texnopos.berdaqgargabayuli.utils.inflate
 import uz.texnopos.berdaqgargabayuli.utils.onClick
 import uz.texnopos.historicalmonuments.R
 import uz.texnopos.historicalmonuments.data.entity.Monument
-import uz.texnopos.historicalmonuments.databinding.ItemLifestyleBinding
+import uz.texnopos.historicalmonuments.databinding.ItemBinding
 
-class MainListAdapter : RecyclerView.Adapter<MainListAdapter.SongsViewHolder>() {
+class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainViewHolder>() {
 
     var models: List<Monument> = listOf()
         @SuppressLint("NotifyDataSetChanged")
@@ -18,33 +18,43 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.SongsViewHolder>() 
             notifyDataSetChanged()
         }
 
-    private var onClickItem: (songs: Monument) -> Unit = {}
+    private var onClickItem: (monument: Monument, pos: Int) -> Unit = {_, _ ->}
 
-    fun setOnClickItem(onClickItem: (songs: Monument) -> Unit) {
+    fun setOnClickItem(onClickItem: (monument: Monument, pos: Int) -> Unit) {
         this.onClickItem = onClickItem
     }
 
-    inner class SongsViewHolder(private val binding: ItemLifestyleBinding) :
+    inner class MainViewHolder(private val binding: ItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun populateModel(songs: Monument) {
+        fun populateModel(monument: Monument, position: Int) {
             binding.apply {
-                tvLifeAge.text = songs.name
-                itemAgeStatus.onClick {
-                    onClickItem.invoke(songs)
+                tvMonument.text = monument.name
+                itemMonument.onClick {
+                    onClickItem.invoke(monument, position)
                 }
+
+                ivMonument.setImageResource(MainFragment.list[position])
+
+//                val imageResName = monument.picture
+//                ivMonument.setImageResource(binding.root.context.resources.getIdentifier(imageResName, "drawable", binding.root.context.packageName))
+//
+//                Glide
+//                    .with(binding.root.context)
+//                    .load(binding.root.context.resources.getIdentifier(imageResName, "drawable", binding.root.context.packageName))
+//                    .into(ivMonument)
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongsViewHolder {
-        val itemView = parent.inflate(R.layout.item_lifestyle)
-        val binding = ItemLifestyleBinding.bind(itemView)
-        return SongsViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
+        val itemView = parent.inflate(R.layout.item)
+        val binding = ItemBinding.bind(itemView)
+        return MainViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: SongsViewHolder, position: Int) {
-        holder.populateModel(models[position])
+    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+        holder.populateModel(models[position], position)
     }
 
     override fun getItemCount() = models.size
