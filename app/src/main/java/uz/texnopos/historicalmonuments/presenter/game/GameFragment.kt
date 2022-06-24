@@ -1,10 +1,12 @@
 package uz.texnopos.historicalmonuments.presenter.game
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.texnopos.berdaqgargabayuli.utils.showMessage
 import uz.texnopos.historicalmonuments.R
@@ -23,10 +25,8 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
 
     private lateinit var binding: FragmentGameBinding
 
-    private var count: Int = -1
-    private var c: Boolean = true
-    private var corrent_answer: Int = 0
-    private var incorrect_answer: Int = 0
+    private var count: Int = 0
+    private var correct: Int = 0
     private lateinit var imageList: MutableList<ImageView>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,8 +36,10 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
         setupObserver()
         viewModel.getAllMonuments()
 
-        val bindingDialog = CustomDialogInGameBinding.inflate(layoutInflater)
-        val bindingResult = CustomDialogResultBinding.inflate(layoutInflater)
+        imageList = ArrayList()
+
+
+
 
         setImage()
 
@@ -47,47 +49,45 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
 
             val name: String = binding.etAnswerName.text.toString()
 
-            if ((count == 9) || (incorrect_answer == 4 && name == models[count].name) ) {
+            if (count == 9) {
+                val bindingResult = CustomDialogResultBinding.inflate(layoutInflater)
                 bindingResult.tvResult.text =
-                    "siz 10 ta savoldan $corrent_answer ta savolga javob berdingiz, ${10-corrent_answer} ta savolga javob bera olmadingiz"
+                    "siz 10 ta savoldan $correct ta savolga javob berdingiz, ${10 - correct} ta savolga javob bera olmadingiz"
                 var dialog = Dialog(requireContext())
+
                 dialog.setContentView(bindingResult.root)
+
                 bindingResult.btnExit.setOnClickListener {
                     dialog.dismiss()
-                    // TODO: back
+                    findNavController().navigateUp()
                 }
                 bindingResult.btnRestart.setOnClickListener {
                     dialog.dismiss()
-                    count = -1
+                    count = 0
                     setQuestion()
                 }
-                dialog.show()
-            } else {
-                if (name == models[count].name) {
-                    c = true
-                    bindingDialog.btnContinue.text = "continue"
-                    bindingDialog.tvTrueOrFalse.text = "siz to'g'i javob berdingiz"
-                    bindingDialog.ivTrueOrFalse.setImageResource(R.drawable.correct)
-                } else {
-                    c = false
-                    bindingDialog.btnContinue.text = "takroran urinib ko'rish"
-                    bindingDialog.tvTrueOrFalse.text = "siz noto'g'i javob berdingiz"
-                    bindingDialog.ivTrueOrFalse.setImageResource(R.drawable.incorrect)
-                }
-                var dialog = Dialog(requireContext())
-                dialog.setContentView(bindingDialog.root)
-                bindingDialog.btnContinue.setOnClickListener {
-                    if (c) {
-                        corrent_answer++;
-                        setQuestion()
-                    } else {
-                        imageList[incorrect_answer].setImageResource(R.drawable.light_bulb_black)
-                        incorrect_answer++;
-                    }
-                    dialog.dismiss()
-                }
+
                 dialog.show()
             }
+            var dialog = Dialog(requireContext())
+            val bindingDialog = CustomDialogInGameBinding.inflate(layoutInflater)
+            if (binding.etAnswerName.text.toString().equals(name == models[count].name)) {
+                bindingDialog.ivTrueOrFalse.setImageResource(R.drawable.correct)
+                bindingDialog.btnContinue.text = "Keyingisi"
+                bindingDialog.tvTrueOrFalse.text = "siz to'g'i javob berdingiz"
+                correct++
+            } else {
+                bindingDialog.ivTrueOrFalse.setImageResource(R.drawable.incorrect)
+                bindingDialog.btnContinue.text = "takroran urinib ko'rish"
+                bindingDialog.tvTrueOrFalse.text = "siz noto'g'i javob berdingiz"
+            }
+            dialog.setContentView(bindingDialog.root)
+            bindingDialog.btnContinue.setOnClickListener {
+                setQuestion()
+                dialog.dismiss()
+            }
+            dialog.show()
+
         }
 
 
@@ -116,47 +116,46 @@ class GameFragment() : Fragment(R.layout.fragment_game) {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun setQuestion() {
         count++;
-        binding.tvCountQuestion.text = "$corrent_answer/${count + 1}"
-        binding.tvDescription.text = models[count].description
+        binding.tvCountQuestion.text = "$correct/${count}"
         binding.ivGame.setImageResource(switchImage())
     }
 
-    private fun switchImage():Int{
-        return when(count){
-            0->{
+    private fun switchImage(): Int {
+        return when (count) {
+            0 -> {
                 R.drawable.gaur_qala
             }
-            1->{
+            1 -> {
                 R.drawable.tupraq_qala
             }
-            2->{
+            2 -> {
                 R.drawable.ustyurt
             }
-            3->{
+            3 -> {
                 R.drawable.mizdakhan
             }
-            4->{
+            4 -> {
                 R.drawable.shilpiq
             }
-            5->{
+            5 -> {
                 R.drawable.qizil_qorgan
             }
-            6->{
+            6 -> {
                 R.drawable.ayaz_qala
             }
-            7->{
+            7 -> {
                 R.drawable.djanbas_qala
             }
-            8->{
+            8 -> {
                 R.drawable.qoyqirilgan_qala
             }
-            else ->{
+            else -> {
                 R.drawable.guldursun_qala
             }
         }
     }
-
 
 }
