@@ -46,6 +46,7 @@
         android:layout_margin="@dimen/margin_middle"
         android:text="@string/about"
         android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"
